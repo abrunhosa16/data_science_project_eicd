@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Tree Predictor</title>
+</head>
+<body>
+    <h2>Enter values for prediction:</h2>
+    <form action="/predict" method="post">
+        <label for="Age">Age:</label> <!-- inteiros > 0 -->
+        <input type="number" id="Age" name="Age" step="any"><br><br>
+        
+        <label for="Grams_day">Grams per day:</label> <!-- float -->
+        <input type="number" id="Grams_day" name="Grams_day" step="any"><br><br>
+        
+        <label for="Packs_year">Packs per year:</label> <!-- inteiros >= 0 -->
+        <input type="number" id="Packs_year" name="Packs_year" step="any"><br><br>
+        
+        <label for="INR">INR:</label> <!-- float -->
+        <input type="number" id="INR" name="INR" step="any"><br><br>
+        
+        <label for="Hemoglobin">Hemoglobin:</label> <!-- float -->
+        <input type="number" id="Hemoglobin" name="Hemoglobin" step="any"><br><br>
+        
+        <label for="MCV">MCV:</label> <!-- float -->
+        <input type="number" id="MCV" name="MCV" step="any"><br><br>
+        
+        <label for="Leucocytes">Leucocytes:</label> <!-- float -->
+        <input type="number" id="Leucocytes" name="Leucocytes" step="any"><br><br>
+        
+        <label for="Platelets">Platelets:</label> <!-- float -->
+        <input type="number" id="Platelets" name="Platelets" step="any"><br><br>
+        
+        <label for="Albumin">Albumin:</label> <!-- float -->
+        <input type="number" id="Albumin" name="Albumin" step="any"><br><br>
+        
+        <label for="Total_Bil">Total Bilirubin:</label> <!-- float -->
+        <input type="number" id="Total_Bil" name="Total_Bil" step="any"><br><br>
+        
+        <label for="AST">AST:</label> <!-- float -->
+        <input type="number" id="AST" name="AST" step="any"><br><br>
+        
+        <label for="GGT">GGT:</label> <!-- float -->
+        <input type="number" id="GGT" name="GGT" step="any"><br><br>
+        
+        <label for="ALP">ALP:</label> <!-- float -->
+        <input type="number" id="ALP" name="ALP" step="any"><br><br>
+        
+        <label for="TP">TP:</label> <!-- float -->
+        <input type="number" id="TP" name="TP" step="any"><br><br>
+        
+        <label for="Creatinine">Creatinine:</label> <!-- float -->
+        <input type="number" id="Creatinine" name="Creatinine" step="any"><br><br>
+        
+        <label for="Nodules">Nodules:</label> <!-- inteiro >= 0 -->
+        <input type="number" id="Nodules" name="Nodules" step="any"><br><br>
+        
+        <label for="Major_Dim">Major Dimension:</label> <!-- float -->
+        <input type="number" id="Major_Dim" name="Major_Dim" step="any"><br><br>
+        
+        <label for="Dir_Bil">Direct Bilirubin:</label> <!-- float -->
+        <input type="number" id="Dir_Bil" name="Dir_Bil" step="any"><br><br>
+        
+        <label for="Iron">Iron:</label> <!-- float -->
+        <input type="number" id="Iron" name="Iron" step="any"><br><br>
+        
+        <label for="Ferritin">Ferritin:</label> <!-- float -->
+        <input type="number" id="Ferritin" name="Ferritin" step="any"><br><br>
+        
+        <label for="Gender">Gender:</label>
+        <input type="radio" id="female" name="Gender" value='Female'>
+        <input type="radio" id="male" name="Gender" value='Male'><br><br>
+        
+        <label for="Symptoms">Symptoms:</label>
+        <input type="radio" id="Symptom_Yes" name="Symptoms" value='Yes'>
+        <label for="Symptom_Yes">Yes</label>
+        <input type="radio" id="Symptom_No" name="Symptoms" value='No'>
+        <label for="Symptom_No">No</label><br><br>
+        
+        <label for="Alcohol">Alcohol:</label>
+        <input type="radio" id="Alcohol_Yes" name="Alcohol" value='Yes'>
+        <label for="Alcohol_Yes">Yes</label>
+        <input type="radio" id="Alcohol_No" name="Alcohol" value='No'>
+        <label for="Alcohol_No">No</label><br><br>
+        
+        <label for="HBsAg">HBsAg:</label>
+        <input type="radio" id="HBsAg_Yes" name="HBsAg" value='Yes'>
+        <label for="HBsAg_Yes">Yes</label>
+        <input type="radio" id="HBsAg_No" name="HBsAg" value='No'>
+        <label for="HBsAg_No">No</label><br><br>
+        
+        <label for="HBeAg">HBeAg:</label>
+        <input type="radio" id="HBeAg_Yes" name="HBeAg" value='Yes'>
+        <label for="HBeAg_Yes">Yes</label>
+        <input type="radio" id="HBeAg_No" name="HBeAg" value='No'>
+        <label for="HBeAg_No">No</label><br><br>
+
+        
+        <label for="HBcAb">HBcAb:</label>
+        <input type="radio" id="HBcAb_Yes" name="HBcAb" value='Yes'>
+        <label for="HBcAb_Yes">Yes</label>
+        <input type="radio" id="HBcAb_No" name="HBcAb" value='No'>
+        <label for="HBcAb_No">No</label><br><br>
+        
+        <label for="HCVAb">HCVAb:</label>
+        <input type="radio" id="HCVAb_Yes" name="HCVAb" value='Yes'>
+        <label for="HCVAb_Yes">Yes</label>
+        <input type="radio" id="HCVAb_No" name="HCVAb" value='No'>
+        <label for="HCVAb_No">No</label><br><br>
+        
+        <label for="Cirrhosis">Cirrhosis:</label>
+        <input type="radio" id="Cirrhosis_Yes" name="Cirrhosis" value='Yes'>
+        <label for="Cirrhosis_Yes">Yes</label>
+        <input type="radio" id="Cirrhosis_No" name="Cirrhosis" value='No'>
+        <label for="Cirrhosis_No">No</label><br><br>
+        
+        <label for="Endemic">Endemic:</label>
+        <input type="radio" id="Endemic_Yes" name="Endemic" value='Yes'>
+        <label for="Endemic_Yes">Yes</label>
+        <input type="radio" id="Endemic_No" name="Endemic" value='No'>
+        <label for="Endemic_No">No</label><br><br>
+        
+        <label for="Smoking">Smoking:</label>
+        <input type="radio" id="Smoking_Yes" name="Smoking" value='Yes'>
+        <label for="Smoking_Yes">Yes</label>
+        <input type="radio" id="Smoking_No" name="Smoking" value='No'>
+        <label for="Smoking_No">No</label><br><br>
+        
+        <label for="Diabetes">Diabetes:</label>
+        <input type="radio" id="Diabetes_Yes" name="Diabetes" value='Yes'>
+        <label for="Diabetes_Yes">Yes</label>
+        <input type="radio" id="Diabetes_No" name="Diabetes" value='No'>
+        <label for="Diabetes_No">No</label><br><br>
+        
+        <label for="AHT">AHT:</label>
+        <input type="radio" id="AHT_Yes" name="AHT" value='Yes'>
+        <label for="AHT_Yes">Yes</label>
+        <input type="radio" id="AHT_No" name="AHT" value='No'>
+        <label for="AHT_No">No</label><br><br>
+        
+        <label for="CRI">CRI:</label>
+        <input type="radio" id="CRI_Yes" name="CRI" value='Yes'>
+        <label for="CRI_Yes">Yes</label>
+        <input type="radio" id="CRI_No" name="CRI" value='No'>
+        <label for="CRI_No">No</label><br><br>
+        
+        <label for="NASH">NASH:</label>
+        <input type="radio" id="NASH_Yes" name="NASH" value='Yes'>
+        <label for="NASH_Yes">Yes</label>
+        <input type="radio" id="NASH_No" name="NASH" value='No'>
+        <label for="NASH_No">No</label><br><br>
+        
+        <label for="Varices">Varices:</label>
+        <input type="radio" id="Varices_Yes" name="Varices" value='Yes'>
+        <label for="Varices_Yes">Yes</label>
+        <input type="radio" id="Varices_No" name="Varices" value='No'>
+        <label for="Varices_No">No</label><br><br>
+        
+        <label for="PHT">PHT:</label>
+        <input type="radio" id="PHT_Yes" name="PHT" value='Yes'>
+        <label for="PHT_Yes">Yes</label>
+        <input type="radio" id="PHT_No" name="PHT" value='No'>
+        <label for="PHT_No">No</label><br><br>
+        
+        <label for="PVT">PVT:</label>
+        <input type="radio" id="PVT_Yes" name="PVT" value='Yes'>
+        <label for="PVT_Yes">Yes</label>
+        <input type="radio" id="PVT_No" name="PVT" value='No'>
+        <label for="PVT_No">No</label><br><br>
+        
+        <label for="Metastasis">Metastasis:</label>
+        <input type="radio" id="Metastasis_Yes" name="Metastasis" value='Yes'>
+        <label for="Metastasis_Yes">Yes</label>
+        <input type="radio" id="Metastasis_No" name="Metastasis" value='No'>
+        <label for="Metastasis_No">No</label><br><br>
+        
+        <label for="PS_Active">Performance Status (Active):</label>
+        <input type="number" id="PS_Active" name="PS_Active" step="any"><br><br>
+        
+        <label for="PS_Ambulatory">Performance Status (Ambulatory):</label>
+        <input type="number" id="PS_Ambulatory" name="PS_Ambulatory" step="any"><br><br>
+        
+        <label for="PS_Disabled">Performance Status (Disabled):</label>
+        <input type="number" id="PS_Disabled" name="PS_Disabled" step="any"><br><br>
+        
+        <label for="PS_Restricted">Performance Status (Restricted):</label>
+        <input type="number" id="PS_Restricted" name="PS_Restricted" step="any"><br><br>
+        
+        <label for="PS_Selfcare">Performance Status (Selfcare):</label>
+        <input type="number" id="PS_Selfcare" name="PS_Selfcare" step="any"><br><br>
+        
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
