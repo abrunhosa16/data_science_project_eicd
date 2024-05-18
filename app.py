@@ -1,30 +1,34 @@
-from flask import Flask, request, render_template
+import streamlit as st, pandas as pd, pickle
 
-app = Flask(__name__)
+with open('variables/variables.pkl', 'rb') as f:
+    data = pickle.load(f)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+continuous_features = data['continuous_features']
+categorical_features = data['categorical_features']
 
-@app.route('/predict', methods=['POST'])
-def predict():
-    # Get input data from HTML form
-    feature1 = float(request.form['feature1'])
-    feature2 = float(request.form['feature2'])
-    feature3 = float(request.form['feature3'])
+df = pd.read_csv('dataset/hcc_dataset.csv')
 
-    # Perform prediction using your model
-    prediction = perform_prediction(feature1, feature2, feature3)  # You need to define this function
+st.title('My first app!')
 
-    # Pass prediction result back to HTML
-    return render_template('result.html', prediction=prediction)
-
-def perform_prediction(feature1, feature2, feature3):
-    # Your prediction logic here
-    # Example:
-    # prediction = model.predict([[feature1, feature2, feature3]])
-    # return prediction
-    pass
-
-if __name__ == '__main__':
-    app.run(debug=True)
+with st.form( key= 'my_form' ): #iniciar formulario
+    
+    features = [] #lista dos valores
+    
+    for col in df.columns:
+        
+        if col in categorical_features:
+            possible_values = list( set( df[col].values ) )
+            value = st.selectbox(str(col) + ': ', possible_values)
+            
+        else:
+            value = st.number_input(str(col) + ': ', min_value= 0.0, step= 0.1)
+        
+        features.append( value )
+    
+    row = pd.DataFrame( [features], columns= df.columns)
+        
+    submit_button = st.form_submit_button( label= 'Submit' )
+    
+if submit_button:
+    st.write('You selected:')
+    st.dataframe(row)
