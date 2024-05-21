@@ -1,3 +1,3 @@
-https://chat.openai.com/share/533e5838-23c2-450f-993f-816f1a654de5
+Para correr os modelos preditivos, o pré processamento dos datasets e a validação final de cada um basta correr o notebook.
 
-aqui esta o chat onde estou a ir tirar infos
+Para utilizar a app basta ter instalado o streamlit (pip install streamlit) e correr no terminal aberto na pasta dos documentos o comando streamlit run app.py
